@@ -1,52 +1,10 @@
 #!/bin/bash
-BIN_EXONERATE="/home/taejoon/src64/exonerate-2.2.0-x86_64/bin/exonerate"
-
+BIN_EXONERATE="/home/taejoon/src/exonerate/current/bin/exonerate"
 PRIMER_FILE="../primers.fasta"
 
-DATANAME="GH_BoneMarrowPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="GH_LymphPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="GH_SpleenPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_BoneMarrowPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_LymphGerm_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_LymphPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_PeriBloodMono_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_SpleenGerm_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VH_SpleenPlasma_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VL_LymphGerm_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VL_PeriBloodMono_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
-
-DATANAME="VL_SpleenGerm_mouse23"
-SEQ_FILE=$DATANAME".fna"
-$BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "primers.$DATANAME.exonerate_cigar"
+for SEQ_FILE in $(ls *fna)
+do
+  DATANAME=${SEQ_FILE%".fna"}
+  echo $DATANAME, $SEQ_FILE
+  $BIN_EXONERATE -q $PRIMER_FILE -t $SEQ_FILE --showcigar T --showvulgar F --showalignment F --showsugar F > "exonerate/primers.$DATANAME.exonerate_cigar"
+done

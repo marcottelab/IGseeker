@@ -81,4 +81,4 @@ for read_name in read2primer.keys():
         tmp_start = R_primer_start[R_primer_list[0]]
         tmp_end = F_primer_start[F_primer_list[-1]]
         print ">%s|%s|%s|R|amplicon_len=%d|read_len=%d"%(read_name,F_primer_list[-1],R_primer_list[0],reverse_len,len(read_seq))
-        print read_seq[tmp_start:tmp_end+1]
+        print revcomp(read_seq[tmp_start:tmp_end+1])

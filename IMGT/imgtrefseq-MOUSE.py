@@ -23,7 +23,7 @@ for tmp_h in seq_list.keys():
     if( tmp_species.find('Mus_musculus') >= 0 ):
         tmp_tag = 'MOUSE_%s'%tmp_type
         if( not f_out.has_key(tmp_tag) ):
-            f_out[tmp_tag] = open('imgtrefseq.%s.fasta'%tmp_tag,'w')
+            f_out[tmp_tag] = open('imgtrefseq.%s.fa'%tmp_tag,'w')
         f_out[tmp_tag].write('%s|%s|%s|%s\n%s\n'%(tmp_h.split()[0],tmp_acc,tokens[3],tokens[4],''.join(seq_list[tmp_h])))
 
 for tmp_tag in f_out.keys():
